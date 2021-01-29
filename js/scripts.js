@@ -28,7 +28,8 @@ function numberToArray(number) {
         let arr = [];
         while(number >= 1){
             arr.push(number%10);    //забираем в массив последнюю цифру
-            number = Math.floor(number/10); //"обрезаем" число
+            //number = Math.floor(number/10); //"обрезаем" число
+            number = number / 10 ^ 0; //"обрезаем" число
         }
         //----разворачиваем
         return arr.reverse();
