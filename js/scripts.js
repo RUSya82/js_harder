@@ -9,7 +9,7 @@ for (let i = 0; i < strNum.length; i++){
 
 console.log(multNum)
 
-multNum = multNum**3;
+multNum = multNum ** 3;
 console.log(multNum);
 let strMultNum = String(multNum);
 console.log('первое число: ' + strMultNum[0] + "    " + 'второе число: ' + strMultNum[1]);
