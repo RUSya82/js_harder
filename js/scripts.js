@@ -21,12 +21,14 @@ alert(summArrayItems(secondArray, 0, 2));
  * @returns Array() если аргумент число, иначе -1
  */
 function numberToArray(number) {
+    // может по ошибке попалась строка?
     number = +number;
+    // если +number == Nan, то условие не выполнится
     if(number){
         let arr = [];
         while(number >= 1){
-            arr.push(number%10);
-            number = Math.floor(number/10);
+            arr.push(number%10);    //забираем в массив последнюю цифру
+            number = Math.floor(number/10); //"обрезаем" число
         }
         //----разворачиваем
         return arr.reverse();
@@ -45,13 +47,13 @@ function numberToArray(number) {
  */
 function summArrayItems(arr, start = 0, length = arr.length) {
     if(Array.isArray(arr)){
-        //-------- Защита от выхода за пределы --------------------
+        //-------- Защита от выхода за пределы --------------------//
         //если start больше длины или отрицателен, то будем считать сначала
         start = (start < arr.length - 1) && (start > 0) ? start : 0;
-        //если start-length больше длины массива, то length равно длина массива минус start
+        //если (start + length) больше последнего индекса, то length равно длина массива минус start
         length = ( (start + length)  < arr.length - 1) ? length : arr.length - start;
 
-        //------- считаем
+        //------- считаем ------------
         let summ = 0;
         //----      i-счетчик шагов, j-счетчик по элементам массива
         for(let i = 0, j = start; i < length; i++, j++){
