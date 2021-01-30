@@ -10,7 +10,7 @@ console.log(sumOfDigits);
 let secondNumber = sumOfDigits ** 3;
 //Вывести на экран первые 2 цифры полученного числа
 let secondArray = numberToArray(secondNumber);
-alert(summArrayItems(secondArray, 0, 2));
+console.log(secondArray[0] + '   ' + secondArray[1]);
 
 
 
@@ -55,10 +55,10 @@ function summArrayItems(arr, start = 0, length = arr.length) {
         length = ( (start + length)  < arr.length - 1) ? length : arr.length - start;
 
         //------- считаем ------------
-        let summ = 0;
+        let summ = 1;
         //----      i-счетчик шагов, j-счетчик по элементам массива
         for(let i = 0, j = start; i < length; i++, j++){
-            summ += (+arr[j]) ? arr[j] : 0;
+            summ *= (+arr[j]) ? arr[j] : 0;
         }
         return summ;
     }
