@@ -2,8 +2,11 @@ function foo(arg) {
     if(typeof arg !== 'string'){
         return 'Not a string';
     }
-    return arg.trim().substr(0, 30) + '...';
-
+    let result = arg.trim();
+    if(result.length > 30){
+        return result.substr(0, 30) + '...';
+    }
+    return  result;
 }
 let firstStr = '      Однажды в студёную зимнюю пору, я из лесу вышел, и сразу зашёл     ';
 let secondStr = foo(firstStr);
