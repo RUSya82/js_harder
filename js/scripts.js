@@ -9,7 +9,13 @@ arr.forEach(item => {
 });
 
 
-let maxCount = 100;
+/*
+    Вывести в столбик все простые числа от 1 до 100 (сделать при помощи цикла)
+    Рядом с каждым числом написать оба делителя данного числа
+    Например: “Делители этого числа: 1 и n”
+*/
+
+let maxCount = 10000;
 
 for(let i = 1; i <= maxCount; i++){
     if(isSimpleNumber(i)){
@@ -19,7 +25,7 @@ for(let i = 1; i <= maxCount; i++){
 
 /**
  * Функция проверки числа на простоту
- * @param number - проверяемое число
+ * @param number - проверяемое число, типа number больше нуля
  * @returns {boolean} - true or false
  */
 function isSimpleNumber(number) {
@@ -31,13 +37,18 @@ function isSimpleNumber(number) {
     if(number < 2){
         return false;
     }
-    //если2, то точно простое, выходим
+    //если 2, то точно простое, выходим
     if(number === 2){
         return true;
     }
-
-    //дойдём только до половины числа, дальше нет смысла
-    for(let i = 2; i < number/2+1; i++){
+    //если число четное, то нет смысла в цикле
+    if (number%2 === 0){
+        return false;
+    }
+    //деление на 2 мы уже проверили, то есть надо начинать с деления на 3
+    //тогда точно нет смысла идти дальше трети числа,
+    //потому что всё, что больше, уже проверено
+    for(let i = 3; i < number/3+1; i+=2){
         if(number%i === 0){
             return false;
         }
