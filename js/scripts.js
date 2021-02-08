@@ -27,7 +27,8 @@ function game(targetNumber) {
         } else if(userNumber == targetNumber) {         //если число угадано
             if(confirm("Ты победил!!!!!!" + `\n` + "Хочешь сыграть ещё??")){
                 gameCounter = 10;
-                game();
+                targetNumber = getRandomInRange(0, 100);
+                game(targetNumber);
             }else{
                 alert("Пока, друг!");
                 return 0;
@@ -37,7 +38,8 @@ function game(targetNumber) {
             if(gameCounter == 0){
                 if(confirm("Попытки закончились!" + `\n` + "Хочешь сыграть ещё??")){
                     gameCounter = 10;
-                    game();
+                    targetNumber = getRandomInRange(0, 100);
+                    game(targetNumber);
                 }else{
                     return 0;
                 }
