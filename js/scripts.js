@@ -62,3 +62,25 @@ function addZero(number) {
 for (let i=0;i<60;i++){
     console.log(i + ": " + getMinuteName(i));
 }
+let first = document.getElementById('temp');
+console.log(first);
+let arr = [];
+arr[0] = "Однажды";
+arr[1] = "В студёную";
+arr[2] = "Зимнюю";
+arr[3] = "пору";
+arr[4] = "я из лесу вышел";
+arr[5] = "и сразу";
+arr[6] = "зашёл";
+let temp = document.querySelector('.temp');
+let result = '';
+for (let i = 0; i < arr.length; i++){
+    result += '<li>' + arr[i] + '</li>';
+}
+temp.innerHTML = result;
+result = '';
+for (let i = 0; i < arr.length; i++){
+    result += '<li>' + arr[i] + '</li>';
+}
+temp.innerHTML += result;
+console.log(first);
