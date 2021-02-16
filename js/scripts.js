@@ -1,86 +1,25 @@
-'use strict';
-let container = document.querySelector('.container');
+generateBackground();
+document.querySelector('button').addEventListener('click', generateBackground);
 
 
+function getRandomHex(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return num.toString(16);
+}
 
-let week = ["Вокресенье", "Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
-let year = ["Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"];
-
-
-
-setInterval(()=>{
-    let date = new Date();
-    let dateA = `Сегодня ${week[date.getDay()]}, ${date.getDate()} ${year[date.getMonth()]} ${date.getFullYear()} года, 
-    ${date.getHours()} ${getHourName(date.getHours())} ${date.getMinutes()} ${getMinuteName(date.getMinutes())} ${date.getSeconds()} ${getSecondsName(date.getSeconds())}`;
-    // '04.02.2020 - 21:05:33'
-        let dateB = `${addZero(date.getDate())}.${addZero(date.getMonth())}.${date.getFullYear()} - 
-    ${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}`;
-    container.innerHTML = `<h2>${dateA}</h2>`;
-    container.innerHTML += `<h2>${dateB}</h2>`;
-}, 100);
-
-
-
-function getHourName(hour) {
-    if(hour > 4 && hour < 21){
-        return 'часов';
+function getRndColor() {
+    let colorStr = '#';
+    for(let i = 0; i < 6; i++){
+        colorStr += getRandomHex(0,15);
     }
-    else if(hour%10 === 1){
-        return 'час';
-    }else if((hour%10 > 1) && (hour%10 < 5)){
-        return "часа";
-    }
-    return 'часов';
+    return colorStr;
 }
-function getMinuteName(hour) {
-    if(hour > 4 && hour < 21){
-        return 'минут';
-    }
-    else if(hour%10 === 1){
-        return 'минута';
-    }else if((hour%10 > 1) && (hour%10 < 5)){
-        return "минуты";
-    }
-    return 'минут';
-}
-function getSecondsName(second) {
-    if(second > 4 && second < 21){
-        return 'секунд';
-    }
-    else if(second%10 === 1){
-        return 'секунда';
-    }else if((second%10 > 1) && (second%10 < 5)){
-        return "секунды";
-    }
-    return 'секунд';
+function generateBackground(){
+    let input = document.querySelector('input');
+    let rndColor = getRndColor();
+    input.value = rndColor;
+    document.body.style.backgroundColor = rndColor;
 }
 
-function addZero(number) {
-    return number > 9 ? number : '0' + number;
-}
-
-for (let i=0;i<60;i++){
-    console.log(i + ": " + getMinuteName(i));
-}
-let first = document.getElementById('temp');
-console.log(first);
-let arr = [];
-arr[0] = "Однажды";
-arr[1] = "В студёную";
-arr[2] = "Зимнюю";
-arr[3] = "пору";
-arr[4] = "я из лесу вышел";
-arr[5] = "и сразу";
-arr[6] = "зашёл";
-let temp = document.querySelector('.temp');
-let result = '';
-for (let i = 0; i < arr.length; i++){
-    result += '<li>' + arr[i] + '</li>';
-}
-temp.innerHTML = result;
-result = '';
-for (let i = 0; i < arr.length; i++){
-    result += '<li>' + arr[i] + '</li>';
-}
-temp.innerHTML += result;
-console.log(first);
