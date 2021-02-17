@@ -23,3 +23,18 @@ function generateBackground(){
     document.body.style.backgroundColor = rndColor;
 }
 
+function func(a,b){
+    a = a^0;
+    b = b^0;
+    if((a >= 0 && a < 12) && (b >= 0 && b < 60) ){
+        return Math.abs(a*30 - b*6);
+    }
+    return 0;
+}
+
+console.log(func(6, 0));
+console.log(func(3, 15));
+console.log(func(11, 47));
+console.log(func(0, 47));
+console.log(func(1, 35));
+
