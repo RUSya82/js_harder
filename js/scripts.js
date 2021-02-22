@@ -1,73 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let ball = document.querySelector('.ball');
-    let startBtn = document.querySelector('.btn-start');
-    let upSpeed = document.querySelector('.up-speed');
-    let downSpeed = document.querySelector('.down-speed');
-    let btnReset = document.querySelector('.btn-reset');
-    let count = 0;
-    let timerID;
-    let animate = false;
-    let startStyle = getComputedStyle(ball);
-    let isDirectionRight = true;
-    let speed = 3;
-
-    function moveBall(){
-        timerID = requestAnimationFrame(moveBall);
-        count++;
-        changeDirection();
-        if(isDirectionRight){
-            ball.style.left = count*speed + 'px';
-        } else{
-            ball.style.right = count*speed + 'px';
+    let input = document.querySelector('input');
+    let result = document.querySelector('.result');
+    let id;
+    input.addEventListener('input' , () => {
+        if(id){
+            clearTimeout(id);
         }
-
-    }
-
-    function changeDirection() {
-        let currentStyle = getComputedStyle(ball);
-        if(parseInt(currentStyle.right) < 5 && isDirectionRight) {
-            ball.removeAttribute('style');
-            isDirectionRight = !isDirectionRight;
-            count = 0;
-            cancelAnimationFrame(timerID);
-            timerID = requestAnimationFrame(moveBall);
-        }else if (!isDirectionRight && parseInt(currentStyle.left) < 5){
-            ball.removeAttribute('style');
-            isDirectionRight = !isDirectionRight;
-            count = 0;
-            cancelAnimationFrame(timerID);
-            timerID = requestAnimationFrame(moveBall);
-        }
-    }
-    startBtn.addEventListener('click', () => {
-        if(!animate){
-            timerID = requestAnimationFrame(moveBall);
-            startBtn.textContent = 'Pause';
-            animate = true;
-        } else {
-            cancelAnimationFrame(timerID);
-            startBtn.textContent = 'Start';
-            animate = false;
-        }
+        id = setTimeout(function () {
+            result.textContent = input.value;
+        }, 300);
     });
-    upSpeed.addEventListener('click', () => {
-        if(speed <= 12){
-            speed += 1;
-        }
-    });
-    downSpeed.addEventListener('click', () => {
-        if(speed > 0){
-            speed -= 1;
-        }
-
-    });
-    btnReset.addEventListener('click', () => {
-        cancelAnimationFrame(timerID);
-       startBtn.textContent = "Start";
-       ball.removeAttribute('style');
-       isDirectionRight = true;
-       count = 0;
-    });
-
-
 });
