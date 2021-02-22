@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let count = 0;
     let timerID;
     let animate = false;
-    let startStyle = getComputedStyle(ball);
     let isDirectionRight = true;
     let speed = 3;
 
@@ -67,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ball.removeAttribute('style');
        isDirectionRight = true;
        count = 0;
+        animate = false;
     });
 
 
