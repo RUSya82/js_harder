@@ -10,29 +10,70 @@
 </head>
 <body>
 <style>
-    #city{
-        display: none;
+    .btn{
+        width: 150px;
+        height: 30px;
+        background-color: #aa173a;
+        outline: none;
+        color: #e7e1e1;
+        border-radius: 5px;
+        position: relative;
+        box-shadow: 0 2px 2px 0 #2f171c;
+    }
+    .btn:hover{
+        background-color: #82061d;
+    }
+    .btn:active{
+        top: 2px;
+        left: 2px;
+        background-color: #c2475e;
+        box-shadow: none;
     }
     .result{
         margin: 15px 0;
     }
-</style>
-<select name="country" id="country">
-    <option value="rus">Россия</option>
-    <option value="uk">Украина</option>
-    <option value="bel">Беларусь</option>
-    <option value="jap">Япония</option>
-</select>
-<select name="city" id="city"></select>
+    .container{
+        max-width: 80%;
+        margin: 250px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .field{
+        width: 100%;
+        height: 50px;
+        border: 1px solid #82061d;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        position: relative;
+    }
+    .ball{
+        background-color: #c2475e;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        position: absolute;
 
-<div class="result">
-    <button class="btn"> sdfioj</button>
+    }
+</style>
+<div class="container">
+    <div class="field">
+        <div class="ball"></div>
+    </div>
+    <div class="result">
+        <button class="btn btn-start"> Start</button>
+        <button class="btn btn-reset"> Reset</button>
+        <button class="btn up-speed"> Up Speed</button>
+        <button class="btn down-speed"> Down Speed</button>
+    </div>
 </div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bBzkS96i2DU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<h3>Форкните доску чтобы её сохранить у себя на доске</h3>
-<h4>Для этого предварительно надо зарегистрироваться на codepen</h4>
-<img border="1" src="http://dl4.joxi.net/drive/2020/04/17/0032/1298/2123026/26/fe01b568c8.jpg" alt="">
+
+
+
 <script src="js/scripts.js"></script>
 </body>
 </html>
