@@ -67,7 +67,47 @@ document.addEventListener('DOMContentLoaded', () => {
        isDirectionRight = true;
        count = 0;
         animate = false;
+        speed = 3;
     });
 
 
 });
+
+
+/*
+Транскрибируемая цепь РНК цепи ДНК образуется путем замены каждого нуклеотида
+его комплементом: G -> C, C -> G, T -> A, A -> U.
+*/
+
+function func(dnk) {
+    return [].map.call(dnk, (item) => {
+        item = item.toUpperCase();
+        switch (item) {
+            case 'A':
+                return 'U';
+            case 'T':
+                return 'A';
+            case 'C':
+                return 'G';
+            case 'G':
+                return 'C';
+            default:
+                return '';
+
+        }
+        //console.log(item)
+    }).join('');
+}
+console.log('gctagctagcta');
+console.log(func('gctagctagcta'));
+console.log('ACGTGGTCTTAA');
+console.log(func('ACGTGGTCTTAA'));
+
+const arr = [
+    {lesson: 1, type: 'basic', point: 2},
+    {lesson: 2, type: 'additional', point: 4},
+]
+
+
+console.log(arr);
+arr = arr.map(item => item.length);
