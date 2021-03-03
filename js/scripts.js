@@ -1,113 +1,65 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let ball = document.querySelector('.ball');
-    let startBtn = document.querySelector('.btn-start');
-    let upSpeed = document.querySelector('.up-speed');
-    let downSpeed = document.querySelector('.down-speed');
-    let btnReset = document.querySelector('.btn-reset');
-    let count = 0;
-    let timerID;
-    let animate = false;
-    let isDirectionRight = true;
-    let speed = 3;
+/*
 
-    function moveBall(){
-        timerID = requestAnimationFrame(moveBall);
-        count++;
-        changeDirection();
-        if(isDirectionRight){
-            ball.style.left = count*speed + 'px';
-        } else{
-            ball.style.right = count*speed + 'px';
-        }
+1.Написать скрипт, которые заменяет слово "функция" и его однокоренные слова в div с id=task1 на «<strong>функция</strong>».
 
-    }
+2. Написать скрипт который в div с id=task2 найдет время. Время имеет формат часы:минуты. И часы, и минуты состоят из двух цифр, пример: 09:00.
+заключить найденное время в тег <b></b>
 
-    function changeDirection() {
-        let currentStyle = getComputedStyle(ball);
-        if(parseInt(currentStyle.right) < 5 && isDirectionRight) {
-            ball.removeAttribute('style');
-            isDirectionRight = !isDirectionRight;
-            count = 0;
-            cancelAnimationFrame(timerID);
-            timerID = requestAnimationFrame(moveBall);
-        }else if (!isDirectionRight && parseInt(currentStyle.left) < 5){
-            ball.removeAttribute('style');
-            isDirectionRight = !isDirectionRight;
-            count = 0;
-            cancelAnimationFrame(timerID);
-            timerID = requestAnimationFrame(moveBall);
-        }
-    }
-    startBtn.addEventListener('click', () => {
-        if(!animate){
-            timerID = requestAnimationFrame(moveBall);
-            startBtn.textContent = 'Pause';
-            animate = true;
-        } else {
-            cancelAnimationFrame(timerID);
-            startBtn.textContent = 'Start';
-            animate = false;
-        }
-    });
-    upSpeed.addEventListener('click', () => {
-        if(speed <= 12){
-            speed += 1;
-        }
-    });
-    downSpeed.addEventListener('click', () => {
-        if(speed > 0){
-            speed -= 1;
-        }
+3. Создать запрос во всем документе найти текст в кавычках и заключить его в теги <mark></mark>
 
-    });
-    btnReset.addEventListener('click', () => {
-        cancelAnimationFrame(timerID);
-       startBtn.textContent = "Start";
-       ball.removeAttribute('style');
-       isDirectionRight = true;
-       count = 0;
-        animate = false;
-        speed = 3;
-    });
+4. Замените в документе домены вида http://site.ru на <a href="http://site.ru">site.ru</a>,
+
+5. Напишите регулярное выражение для поиска цвета, заданного как #ABCDEF, вывести цвет в консоль
+
+6. Ссылки такого вида http://site.ru/aaaa/bbbb.html заменить
+на <a href="http://site.ru/aaaa/bbbb.html">site.ru</a>
 
 
-});
+Попрактикуйтесь на кроссвордах https://regexcrossword.com/
+и на задачках https://habr.com/ru/post/167015/
+ */
+//1.Написать скрипт, которые заменяет слово "функция" и его однокоренные слова в div с id=task1 на «<strong>функция</strong>».
+let task1 = document.getElementById('task1');
+let reg = /([а-яё]*функци[а-яё]*)/gi;
+let text = task1.innerHTML;
+text= text.replace(reg, '<strong>$1</strong>');
+task1.innerHTML = text;
 
+/*2. Написать скрипт который в div с id=task2 найдет время. Время имеет формат часы:минуты. И часы, и минуты состоят из двух цифр, пример: 09:00.
+заключить найденное время в тег <b></b>*/
+let task2 = document.getElementById('task2');
+text = task2.innerHTML;
+reg = /(\d{2}):(\d{2})/gi;
+text= text.replace(reg, '<b>$1:$2</b>');
+task2.innerHTML = text;
+
+
+
+//выапывапывапывап
+//3. Создать запрос во всем документе найти текст в кавычках и заключить его в теги <mark></mark>
+text = task1.innerHTML;
+reg = /(["|'|«].+?["|»|'])/gi;
+text= text.replace(reg, '<mark>$1</mark>');
+task1.innerHTML = text;
+text = task2.innerHTML;
+reg = /(".+")/gi;
+text= text.replace(reg, '<mark>$1</mark>');
+task2.innerHTML = text;
+
+//4. Замените в документе домены вида http://site.ru на <a href="http://site.ru">site.ru</a>
+text = task2.innerHTML;
+reg = /((http:\/\/)(www\.)?(\S+)(.ru\/?)([-a-zA-Z0-9@:%_\+.~#?&//=]*))/gi
+console.log(text.match(reg));
+text= text.replace(reg, '<a href="$1">$4$5</a>');
+task2.innerHTML = text;
+
+//Напишите регулярное выражение для поиска цвета, заданного как #ABCDEF, вывести цвет в консоль
+reg = /#[A-F0-9]{6}/g;
+text = document.documentElement.innerHTML;
+console.log(text.match(reg));
 
 /*
-Транскрибируемая цепь РНК цепи ДНК образуется путем замены каждого нуклеотида
-его комплементом: G -> C, C -> G, T -> A, A -> U.
+6. Ссылки такого вида http://site.ru/aaaa/bbbb.html заменить
+на <a href="http://site.ru/aaaa/bbbb.html">site.ru</a>
 */
-
-function func(dnk) {
-    return [].map.call(dnk, (item) => {
-        item = item.toUpperCase();
-        switch (item) {
-            case 'A':
-                return 'U';
-            case 'T':
-                return 'A';
-            case 'C':
-                return 'G';
-            case 'G':
-                return 'C';
-            default:
-                return '';
-
-        }
-        //console.log(item)
-    }).join('');
-}
-console.log('gctagctagcta');
-console.log(func('gctagctagcta'));
-console.log('ACGTGGTCTTAA');
-console.log(func('ACGTGGTCTTAA'));
-
-const arr = [
-    {lesson: 1, type: 'basic', point: 2},
-    {lesson: 2, type: 'additional', point: 4},
-]
-
-
-console.log(arr);
-arr = arr.map(item => item.length);
+//Выполнено в 4 пункте
