@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         moneyInputs.forEach(item => item.value = '');
         message.textContent = '';
     });
-    console.log(currentCurrency);
+    
 
     moneyInputs.forEach(item => {
         item.addEventListener('input', (e) => {
