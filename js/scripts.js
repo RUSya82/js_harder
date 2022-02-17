@@ -15,6 +15,7 @@ const DomElement = function ( selector, height, width, bg, fontSize, text) {
     this.bg = bg;
     this.fontSize = fontSize;
     this.text = text;
+    console.log('sdfgfdsgf');
     this.cssString = `height: ${this.height}; 
         width: ${this.width};
         background-color: ${this.bg};
@@ -61,6 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let newElem = new DomElement('.dom', '100px', '100px', '#44a51a', '20px', '');
     newElem.render();
 });
+console.log('dfdfgfg')
+console.log('ghjgfj')
+console.log('ghjhgj')
+console.log('dfdfghjhjfgfg')
+console.log('ghjhgfj')
+console.log('fghjhgj')
 
 
 
